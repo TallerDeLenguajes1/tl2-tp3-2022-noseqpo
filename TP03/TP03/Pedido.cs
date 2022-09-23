@@ -9,9 +9,9 @@ namespace TP03
     public class Pedido
     {
         int nro;
-        string obs = "";
+        public string obs = "";
         Cliente nombre;
-        public Estado e = Estado.SinAsignar;
+        public Estado est = Estado.SinAsignar;
 
         public Estado estado { get; internal set; }
 

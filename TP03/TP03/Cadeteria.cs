@@ -21,18 +21,28 @@ namespace TP03
         public void AceptarPedido()
         {
             Pedido nuevo;
+            // usar reader
+            Random rnd = new Random();
+            //AsignarPedido(nuevo, cadetes.ElementAt(rnd.Next(1, cadetes.Count())));
         }
 
         public void AsignarPedido(Pedido asign, Cadete cadete)
         {
+            // el cadete deberia ser seleccionado
             cadete.pedidos.Add(asign);
-            // control
-            asign.estado = Estado.Asignado; // lo encapsula con un internal??
+            if(asign.estado == Estado.Cancelado)
+            {
+                Console.WriteLine("El pedido seleccionado se encuentra cancelado");
+            }
+            else
+            {
+                asign.estado = Estado.Asignado; // lo encapsula con un internal??
+            }
         }
         
-        public static void CambiarEstado(Pedido set)
+        public void CambiarEstado(Pedido set)
         {
-            // sacar static
+
             int cnt = 1;
             foreach (Estado estado in (Estado[])Enum.GetValues(typeof(Estado)))
             {
@@ -64,6 +74,27 @@ namespace TP03
             // excepciones!!!!!!
 
             // index de cadete
+        }
+
+        public void InformeCadetes()
+        {
+            foreach (Cadete cadete in cadetes)
+            {
+                var resultado = from pedido in cadete.pedidos
+                                where pedido.est == Estado.Entregado
+                                select pedido;
+
+                Console.WriteLine("El cadete {0} realizó {1} entregas exitosas", cadete.name, resultado.Count());
+            
+                foreach(Pedido ped in resultado)
+                {
+                    Console.WriteLine(ped.obs);
+                }
+                
+            }
+            
+
+            
         }
 
     }
