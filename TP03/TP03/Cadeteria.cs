@@ -11,7 +11,7 @@ namespace TP03
 
         string nombre = "Helljumper Cadeteria";
         uint telefono = 3813300000;
-        List<Cadete> cadetes = new List<Cadete>(); 
+        public List<Cadete> cadetes = new List<Cadete>(); 
 
         public Cadeteria()
         {
@@ -32,6 +32,7 @@ namespace TP03
         
         public static void CambiarEstado(Pedido set)
         {
+            // sacar static
             int cnt = 1;
             foreach (Estado estado in (Estado[])Enum.GetValues(typeof(Estado)))
             {
@@ -48,6 +49,21 @@ namespace TP03
                 default:
                     break;
             }
+        }
+
+        public void CambiarCadete(Pedido set)
+        {
+            int cnt = 1;
+            foreach (Cadete cadete in cadetes)
+            {
+                Console.WriteLine("Si desea asignar el pedido al cadete {0} presione {1}", cadete.name, cnt);
+                cnt++;
+            }
+            string tmp = Console.ReadLine();
+            int entrada = Int32.Parse(tmp);
+            // excepciones!!!!!!
+
+            // index de cadete
         }
 
     }

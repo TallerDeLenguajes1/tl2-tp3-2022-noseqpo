@@ -9,7 +9,7 @@ namespace TP03
     public class Persona
     {
         public int id;
-        string name;
+        public string name;
         string dir;
         int tel;
         
